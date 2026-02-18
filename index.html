@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ORIGIN</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(ellipse at bottom, #0b0f2a 0%, #000000 100%);
+        font-family: Arial, sans-serif;
+        color: white;
+    }
+
+    /* Stars */
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        box-shadow:
+            100px 200px #fff,
+            300px 400px #fff,
+            500px 100px #fff,
+            700px 600px #fff,
+            900px 300px #fff,
+            1200px 500px #fff,
+            1500px 200px #fff,
+            1700px 700px #fff,
+            200px 800px #fff,
+            400px 900px #fff;
+        animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+        from { opacity: 0.4; }
+        to { opacity: 1; }
+    }
+
+    .container {
+        text-align: center;
+        z-index: 10;
+    }
+
+    .origin {
+        font-size: 48px;
+        letter-spacing: 8px;
+        margin-bottom: 30px;
+    }
+
+    input {
+        padding: 8px;
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        text-align: center;
+        outline: none;
+    }
+
+    button {
+        padding: 8px 15px;
+        margin-left: 10px;
+        background: white;
+        color: black;
+        border: none;
+        cursor: pointer;
+    }
+
+    .error {
+        font-size: 10px;
+        color: #ff4d4d;
+        margin-top: 8px;
+        height: 12px;
+    }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+    <div class="origin">ORIGIN</div>
+    <div>
+        <input type="password" id="passcode" placeholder='Enter Passcode "zerocom"'>
+        <button onclick="checkPass()">Go</button>
+    </div>
+    <div class="error" id="errorMsg"></div>
+</div>
+
+<script>
+function checkPass() {
+    var pass = document.getElementById("passcode").value;
+    var error = document.getElementById("errorMsg");
+
+    if (pass === "zerocom") {
+        window.location.href = "https://urbanmirage.github.io/zeroorigins/";
+    } else {
+        error.textContent = "Invalid passcode";
+        setTimeout(function() {
+            error.textContent = "";
+        }, 1500);
+    }
+}
+</script>
+
+</body>
+</html>
