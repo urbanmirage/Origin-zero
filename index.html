@@ -1,114 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ORIGIN</title>
-<style>
-    body {
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: radial-gradient(ellipse at bottom, #0b0f2a 0%, #000000 100%);
-        font-family: Arial, sans-serif;
-        color: white;
-    }
-
-    /* Stars */
-    .stars {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        box-shadow:
-            100px 200px #fff,
-            300px 400px #fff,
-            500px 100px #fff,
-            700px 600px #fff,
-            900px 300px #fff,
-            1200px 500px #fff,
-            1500px 200px #fff,
-            1700px 700px #fff,
-            200px 800px #fff,
-            400px 900px #fff;
-        animation: twinkle 3s infinite alternate;
-    }
-
-    @keyframes twinkle {
-        from { opacity: 0.4; }
-        to { opacity: 1; }
-    }
-
-    .container {
-        text-align: center;
-        z-index: 10;
-    }
-
-    .origin {
-        font-size: 48px;
-        letter-spacing: 8px;
-        margin-bottom: 30px;
-    }
-
-    input {
-        padding: 8px;
-        background: transparent;
-        border: 1px solid white;
-        color: white;
-        text-align: center;
-        outline: none;
-    }
-
-    button {
-        padding: 8px 15px;
-        margin-left: 10px;
-        background: white;
-        color: black;
-        border: none;
-        cursor: pointer;
-    }
-
-    .error {
-        font-size: 10px;
-        color: #ff4d4d;
-        margin-top: 8px;
-        height: 12px;
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORIGIN</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
 
-<div class="stars"></div>
+<body class="bg-black text-white min-h-screen flex items-center justify-center">
 
-<div class="container">
-    <div class="origin">ORIGIN</div>
-    <div>
-        <input type="password" id="passcode" placeholder='Enter Passcode'>
-        <button onclick="checkPass()">Go</button>
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="flex flex-col items-center gap-4">
+    <h1 class="text-3xl tracking-widest">ORIGIN</h1>
+
+    <input
+      id="passInput"
+      type="password"
+      placeholder="Enter passcode"
+      class="bg-gray-900 border border-white/30 rounded px-4 py-2 text-center focus:outline-none"
+    >
+
+    <button
+      onclick="checkPass()"
+      class="border border-white px-6 py-2 rounded hover:bg-white hover:text-black transition"
+    >
+      Enter
+    </button>
+
+    <p id="errorMsg" class="text-red-400 hidden">Wrong passcode</p>
+  </div>
+
+  <!-- MAIN CONTENT (HIDDEN FIRST) -->
+  <div id="mainContent" class="hidden flex flex-col items-center gap-6">
+
+    <h1 class="text-white text-2xl tracking-widest mb-2">ORIGIN</h1>
+
+    <div class="flex gap-6">
+
+      <!-- Block Card -->
+      <a href="https://urbanmirage.github.io/zeroorigins/" target="_blank"
+         class="bg-gray-900 rounded-lg p-6 w-40 flex flex-col items-center 
+                shadow-lg hover:shadow-xl transition transform hover:scale-105
+                border border-white/20 border-[0.5px]">
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l9-6 9 6v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+        </svg>
+
+        <h2 class="text-white text-lg font-bold">Block</h2>
+      </a>
+
+      <!-- Landmark Card -->
+      <a href="https://urbanmirage.github.io/Zonemap/" target="_blank"
+         class="bg-gray-900 rounded-lg p-6 w-40 flex flex-col items-center 
+                shadow-lg hover:shadow-xl transition transform hover:scale-105
+                border border-white/20 border-[0.5px]">
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A2 2 0 013 15.382V5.618a2 2 0 011.553-1.894L9 2l6 3 5-3 1 1v14l-6 3-6-3z" />
+        </svg>
+
+        <h2 class="text-white text-lg font-bold">Landmark</h2>
+      </a>
+
+      <!-- GPC Card -->
+      <a href="https://urbanmirage.github.io/GPC/" target="_blank"
+         class="bg-gray-900 rounded-lg p-6 w-40 flex flex-col items-center 
+                shadow-lg hover:shadow-xl transition transform hover:scale-105
+                border border-white/20 border-[0.5px]">
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 2h6a2 2 0 012 2v16a2 2 0 01-2 2H9a2 2 0 01-2-2V4a2 2 0 012-2zM9 7h6M9 11h2m2 0h2M9 15h2m2 0h2" />
+        </svg>
+
+        <h2 class="text-white text-lg font-bold">GPC</h2>
+      </a>
+
     </div>
-    <div class="error" id="errorMsg"></div>
-</div>
+  </div>
 
-<script>
-function checkPass() {
-    var pass = document.getElementById("passcode").value;
-    var error = document.getElementById("errorMsg");
+  <script>
+    const PASSCODE = "mddmms26";
 
-    if (pass === "zerocom") {
-        window.location.href = "https://urbanmirage.github.io/zeroorigins/";
-    } else {
-        error.textContent = "Invalid passcode";
-        setTimeout(function() {
-            error.textContent = "";
-        }, 1500);
+    function checkPass() {
+      const input = document.getElementById("passInput").value;
+      const error = document.getElementById("errorMsg");
+
+      if (input === PASSCODE) {
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("mainContent").classList.remove("hidden");
+      } else {
+        error.classList.remove("hidden");
+      }
     }
-}
-</script>
+
+    // press Enter key to submit
+    document.getElementById("passInput").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") checkPass();
+    });
+  </script>
 
 </body>
 </html>
-
-
-
